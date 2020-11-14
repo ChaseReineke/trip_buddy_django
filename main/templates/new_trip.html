@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Trip</title>
+</head>
+
+<body>
+    <h1>Hello, {{logged_in_user.first_name}}! Create a trip!</h1>
+    <p><a href="/logout">Logout</a></p>
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <label for="destination">Destination</label>
+        <input type="text" name="destination" id="destination">
+        <label for="start_date">Start Date</label>
+        <input type="date" name="start_date" id="start_date">
+        <label for="end_date">End Date</label>
+        <input type="date" name="end_date" id="end_date">
+        <label for="plan">Plan</label>
+        <textarea name="plan" id="plan"></textarea>
+        <input type="hidden" name="traveler" value="{{user.id}}">
+
+        <button>Submit</button>
+    </form>
+    <a href="/success">Cancel</a>
+</body>
+
+</html>
